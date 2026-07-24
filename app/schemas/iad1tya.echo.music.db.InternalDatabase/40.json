@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 40,
-    "identityHash": "6d9d51e50dbde5107311ce097d95770c",
+    "identityHash": "a5602fdbfabe375ebf68dbad8e6fa4cd",
     "entities": [
       {
         "tableName": "song",
@@ -256,7 +256,27 @@
           "columnNames": [
             "id"
           ]
-        }
+        },
+        "indices": [
+          {
+            "name": "index_artist_bookmarkedAt",
+            "unique": false,
+            "columnNames": [
+              "bookmarkedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_artist_bookmarkedAt` ON `${TABLE_NAME}` (`bookmarkedAt`)"
+          },
+          {
+            "name": "index_artist_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_artist_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ]
       },
       {
         "tableName": "album",
@@ -359,7 +379,27 @@
           "columnNames": [
             "id"
           ]
-        }
+        },
+        "indices": [
+          {
+            "name": "index_album_bookmarkedAt",
+            "unique": false,
+            "columnNames": [
+              "bookmarkedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_album_bookmarkedAt` ON `${TABLE_NAME}` (`bookmarkedAt`)"
+          },
+          {
+            "name": "index_album_inLibrary",
+            "unique": false,
+            "columnNames": [
+              "inLibrary"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_album_inLibrary` ON `${TABLE_NAME}` (`inLibrary`)"
+          }
+        ]
       },
       {
         "tableName": "playlist",
@@ -456,7 +496,27 @@
           "columnNames": [
             "id"
           ]
-        }
+        },
+        "indices": [
+          {
+            "name": "index_playlist_bookmarkedAt",
+            "unique": false,
+            "columnNames": [
+              "bookmarkedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_playlist_bookmarkedAt` ON `${TABLE_NAME}` (`bookmarkedAt`)"
+          },
+          {
+            "name": "index_playlist_browseId",
+            "unique": false,
+            "columnNames": [
+              "browseId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_playlist_browseId` ON `${TABLE_NAME}` (`browseId`)"
+          }
+        ]
       },
       {
         "tableName": "song_artist_map",
@@ -724,6 +784,16 @@
           ]
         },
         "indices": [
+          {
+            "name": "index_playlist_song_map_playlistId_position",
+            "unique": false,
+            "columnNames": [
+              "playlistId",
+              "position"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_playlist_song_map_playlistId_position` ON `${TABLE_NAME}` (`playlistId`, `position`)"
+          },
           {
             "name": "index_playlist_song_map_playlistId",
             "unique": false,
@@ -1438,7 +1508,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6d9d51e50dbde5107311ce097d95770c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a5602fdbfabe375ebf68dbad8e6fa4cd')"
     ]
   }
 }
